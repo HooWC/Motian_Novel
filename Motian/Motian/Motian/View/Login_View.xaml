@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:vm="clr-namespace:Motian.ViewModel"
+             x:Class="Motian.View.Login_View"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:LoginVM x:Key="LoginVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout HeightRequest="700">
+
+                <Image Source="loginImg" AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                   Aspect="AspectFill"></Image>
+
+                <Frame Padding="20" AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                       BackgroundColor="Transparent">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.2*"/>
+                            <RowDefinition Height="1.1*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,80,0,0">
+                            <Image Source="logo" WidthRequest="200" HeightRequest="60"></Image>
+                            <Label Text="—— 享受阅读的世界 ——"  HorizontalOptions="CenterAndExpand"></Label>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="0" BindingContext="{StaticResource LoginVM}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="iconsuser" 
+                                       Grid.Row="0" Grid.Column="0"
+                                       Margin="0,9,0,0"
+                                       WidthRequest="35"
+                                       VerticalOptions="StartAndExpand"></Image>
+
+                                <inputLayout:SfTextInputLayout 
+                                Hint="请输入用户名"
+                                Grid.Row="0" Grid.Column="1"
+                                    FocusedColor="#d1594f"
+                                    HeightRequest="10">
+                                    <Entry BackgroundColor="Transparent"
+                                           HeightRequest="60" Text="{Binding Username}"/>
+                                </inputLayout:SfTextInputLayout>
+
+                                <Image Source="iconspassword" 
+                                       Grid.Row="1" Grid.Column="0"
+                                       Margin="0,5,0,0"
+                                       WidthRequest="90"
+                                       VerticalOptions="StartAndExpand"></Image>
+
+                                <inputLayout:SfTextInputLayout 
+                                Hint="请输入密码"
+                                ShowCharCount="true"
+                                CharMaxLength="8"
+                                Grid.Row="1" Grid.Column="1"
+                                FocusedColor="#d1594f">
+                                    <Entry BackgroundColor="Transparent"
+                                           IsPassword="True" HeightRequest="60" Text="{Binding Password}"/>
+                                </inputLayout:SfTextInputLayout>
+                            </Grid>
+
+                            <button:SfButton x:Name="button" Text="登入" CornerRadius="3"
+                                             BackgroundColor="#646769"  TextColor="#ede4e5"
+                                             FontSize="18" FontAttributes="Bold" 
+                                             Command="{Binding LoginFunction}">
+                            </button:SfButton>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="没有账号？"></Label>
+                                <Label Text="注册" TextColor="#d13d4e">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SignUp"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="0" Padding="0,30,0,0" VerticalOptions="EndAndExpand">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <BoxView BackgroundColor="#807c7c"
+                                     HeightRequest="1"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Center"
+                                     Grid.Row="0"
+                                     Grid.Column="0"></BoxView>
+
+                                <Label Text="第三方登入" TextColor="#807c7c"
+                                       Grid.Row="0" Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="CenterAndExpand"></Label>
+
+                                <BoxView BackgroundColor="#807c7c"
+                                     HeightRequest="1"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Center"
+                                     Grid.Row="0"
+                                     Grid.Column="2"></BoxView>
+
+                            </Grid>
+
+                            <Grid Margin="0,20,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="iconFB" Grid.Row="0"
+                                       Grid.Column="0"
+                                       WidthRequest="0"
+                                       HeightRequest="0"></Image>
+
+                                <Image Source="iconwechat" Grid.Row="0"
+                                       Grid.Column="1"
+                                       WidthRequest="100"
+                                       HeightRequest="30"></Image>
+
+                                <Image Source="iconQQ" Grid.Row="0"
+                                       Grid.Column="2"
+                                       WidthRequest="10"
+                                       HeightRequest="10"></Image>
+
+
+                            </Grid>
+
+
+                        </StackLayout>
+
+
+
+
+
+                    </Grid>
+
+
+                </Frame>
+
+
+
+
+
+
+
+
+
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

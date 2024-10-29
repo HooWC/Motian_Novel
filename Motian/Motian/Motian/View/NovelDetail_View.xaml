@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:vm="clr-namespace:Motian.ViewModel"
+             x:Class="Motian.View.NovelDetail_View"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:HomeVM x:Key="HomeVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Frame Padding="0">
+
+            <Frame.Background>
+                <LinearGradientBrush StartPoint="1,0"
+                                         EndPoint="1,1">
+                    <GradientStop Color="#44404a" Offset="0.1"/>
+                    <GradientStop Color="#332c3d" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Frame.Background>
+
+            <StackLayout>
+
+                <AbsoluteLayout HeightRequest="40">
+                    <StackLayout AbsoluteLayout.LayoutFlags="All"
+                             AbsoluteLayout.LayoutBounds="0,0,1,1"
+                             Orientation="Horizontal" Padding="20,0,20,0">
+
+                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image Source="iconarrowleft2" WidthRequest="17" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Back"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                            <Image Source="iconSearchWhite" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </AbsoluteLayout>
+
+                <ScrollView>
+
+                    <AbsoluteLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                     AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                            <StackLayout Margin="10,5,10,10">
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding NovelDetailData.NovelImg}" Grid.Row="0"
+                                           Grid.Column="0" WidthRequest="100" HeightRequest="160"></Image>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                                                 Padding="20,0,0,0">
+                                        <Label Text="{Binding NovelDetailData.NovelName}" TextColor="White" FontSize="17" Padding="0,0,0,20"></Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="作者：" TextColor="White"></Label>
+                                            <Label Text="{Binding NovelDetailData.Author}" TextColor="White"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="类型：" TextColor="White"></Label>
+                                            <Label Text="{Binding NovelDetailData.ListTyle}" TextColor="#dbd9d9"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <pancakeview:PancakeView
+                                            BackgroundColor="White"
+                                            Padding="0,10,0,10"
+                                            CornerRadius="20,20,0,0" 
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+
+                                <StackLayout>
+
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="0.01*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding NovelDetailData.PopularityWork}" VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   Grid.Row="0" Grid.Column="0"></Label>
+
+                                            <BoxView BackgroundColor="#e8e8e8"
+                                                     Grid.Row="0" Grid.Column="1"></BoxView>
+
+
+                                            <Label Text="完结" VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   Grid.Row="0" Grid.Column="2"></Label>
+
+                                        </Grid>
+                                    </StackLayout>
+
+                                    <Frame CornerRadius="5" BackgroundColor="#e8e8e8" Padding="20,4,20,4"
+                                           HorizontalOptions="Start" Margin="16,6,0,0">
+                                        <Label Text="{Binding NovelDetailData.MaleType,StringFormat='{0}生小说'}"></Label>
+                                    </Frame>
+
+                                    <StackLayout Padding="20,16,20,4">
+                                        <Label Text="简介："></Label>
+                                        <Label Text="{Binding NovelDetailData.NovelDescription}">
+                                        </Label>
+                                    </StackLayout>
+
+                                    <StackLayout BackgroundColor="#e8e8e8" Orientation="Horizontal" 
+                                                 Padding="20,0,0,0" Margin="0,20,0,40">
+
+                                        <Label Text="{Binding NovelDetailData.NovelPrice,StringFormat='RM {0:F2}'}" HorizontalOptions="Start"
+                                               VerticalTextAlignment="Center" TextColor="#ffad42" FontAttributes="Bold"></Label>
+
+                                        <pancakeview:PancakeView
+                                            BackgroundColor="White"
+                                            Padding="10"
+                                            CornerRadius="20,0,20,0" 
+                                            HorizontalOptions="EndAndExpand"
+                                            WidthRequest="150">
+                                            <Label Text="购买" HorizontalTextAlignment="Center"
+                                                   FontAttributes="Bold"></Label>
+                                            <pancakeview:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AddToCart" CommandParameter="{Binding NovelDetailData.NovelId}"/>
+                                            </pancakeview:PancakeView.GestureRecognizers>
+                                        </pancakeview:PancakeView>
+
+                                    </StackLayout>
+
+                                    <!--3-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="340" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="编辑精选" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding editorChoice}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="4"
+                                                                 VerticalItemSpacing="4"/>
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout>
+                                                            <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="120"/>
+                                                            <Label Text="{Binding NovelName}" HorizontalTextAlignment="Center"
+                                                           FontSize="9"/>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+                                                        </StackLayout>
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+
+                                </StackLayout>
+
+                            </pancakeview:PancakeView>
+
+
+                        </StackLayout>
+
+                    </AbsoluteLayout>
+
+                </ScrollView>
+
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+
+</ContentPage>

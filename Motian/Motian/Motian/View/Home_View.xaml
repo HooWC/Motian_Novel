@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:pancardview="clr-namespace:PanCardView;assembly=PanCardView" xmlns:processors="clr-namespace:PanCardView.Processors;assembly=PanCardView" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView" xmlns:syncfusion="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+             x:Class="Motian.View.Home_View"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:vm="clr-namespace:Motian.ViewModel" xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:SignupVM x:Key="SignupVM"/>
+            <vm:HomeVM x:Key="HomeVM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <tabView:SfTabView BackgroundColor="#f2f2f2"  EnableSwiping="False"
+                           TabHeaderPosition="Bottom" DisplayMode="ImageWithText"
+                           VisibleHeaderCount="4">
+
+            <tabView:SfTabView.SelectionIndicatorSettings>
+                <tabView:SelectionIndicatorSettings Color="Transparent" Position="Fill" StrokeThickness="0"
+                                                    AnimationDuration="10"/>
+            </tabView:SfTabView.SelectionIndicatorSettings>
+
+            <tabView:SfTabItem Title="首页" ImageSource="iconHome" SelectionColor="#000000" TitleFontColor="#666666">
+                <tabView:SfTabItem.Content>
+                    <StackLayout BackgroundColor="White">
+
+                        <AbsoluteLayout HeightRequest="142">
+                            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         Orientation="Horizontal" Padding="20,0,20,0">
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="logo" WidthRequest="130" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="iconSearch" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </AbsoluteLayout>
+
+                        <ScrollView>
+
+                            <AbsoluteLayout>
+
+                                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                             AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                                    <!--1-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand" Padding="10,0,10,0">
+
+                                        <syncfusion:SfRotator x:Name="TPData"
+                                                              BackgroundColor="#ececec"
+                                                              NavigationStripPosition="Bottom"
+                                                              DotsBorderColor="White"  HeightRequest="150"
+                                                              WidthRequest="200"
+                                                              SelectedDotColor="#d62255"
+                                                              EnableAutoPlay="True"
+                                                              NavigationDelay="2000">
+                                            <syncfusion:SfRotator.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding NovelImg}" Aspect="AspectFill"></Image>
+                                                </DataTemplate>
+                                            </syncfusion:SfRotator.ItemTemplate>
+                                        </syncfusion:SfRotator>
+
+                                    </StackLayout>
+
+                                    <!--2-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 Padding="10">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Frame Grid.Row="0" Grid.Column="0"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="现代言情" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="0" Grid.Column="1"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="都市奇幻" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="0" Grid.Column="2"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="总裁豪门" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="0" Grid.Column="3"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="年代重生" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="1" Grid.Column="0"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="玄幻奇幻" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="1" Grid.Column="1"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="异界大陆" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="1" Grid.Column="2"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="幻想言情" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                            <Frame Grid.Row="1" Grid.Column="3"
+                                                   BorderColor="Black" Padding="5,8,5,8">
+                                                <Label Text="更多" TextColor="Black"
+                                                       FontSize="12" HorizontalTextAlignment="Center"/>
+                                            </Frame>
+
+                                        </Grid>
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#f2f2f2" HeightRequest="8"
+                                             VerticalOptions="FillAndExpand"/>
+
+                                    <!--3-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="340" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="编辑精选" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding editorChoice}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="4"
+                                                                 VerticalItemSpacing="4"/>
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout>
+                                                            <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="120"/>
+                                                            <Label Text="{Binding NovelName}" HorizontalTextAlignment="Center"
+                                                           FontSize="9"/>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+                                                        </StackLayout>
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#f2f2f2" HeightRequest="8"
+                                             VerticalOptions="FillAndExpand"/>
+
+                                    <!--4-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="340" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="精选热书" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding hotBooks}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="4"
+                                                                 VerticalItemSpacing="4"/>
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout>
+                                                            <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="120"/>
+                                                            <Label Text="{Binding NovelName}" HorizontalTextAlignment="Center"
+                                                           FontSize="9"/>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+                                                        </StackLayout>
+
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#f2f2f2" HeightRequest="8"
+                                             VerticalOptions="FillAndExpand"/>
+
+                                    <!--5-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="173" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="男生精选" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding BoyNovel}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="4"/>
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                            <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="120"/>
+                                                            <Label Text="{Binding NovelName}" HorizontalTextAlignment="Center"
+                                                           FontSize="9"/>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+                                                        </StackLayout>
+
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#f2f2f2" HeightRequest="8"
+                                             VerticalOptions="FillAndExpand"/>
+
+                                    <!--6-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="173" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="女生精选" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding GrilNovel}">
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" Span="4" HorizontalItemSpacing="4"/>
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                            <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="120"/>
+                                                            <Label Text="{Binding NovelName}" HorizontalTextAlignment="Center"
+                                                           FontSize="9"/>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+                                                        </StackLayout>
+
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#f2f2f2" HeightRequest="8"
+                                             VerticalOptions="FillAndExpand"/>
+
+                                    <!--7-->
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 HeightRequest="390" BindingContext="{StaticResource HomeVM}">
+                                        <StackLayout Padding="14,5,10,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                <Label Text="人气榜" TextColor="#4d4d4d" FontSize="16" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                <Label Text="更多" TextColor="#f0540c" FontSize="13" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout Padding="14,0,14,0">
+
+                                            <CollectionView ItemsSource="{Binding popularityList}"
+                                                            ItemsLayout="VerticalGrid, 2">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+
+                                                        <StackLayout Margin="0,0,0,10">
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="1.6*"/>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <Image Source="{Binding NovelImg}" Aspect="AspectFit"
+                                                               Grid.Row="0" Grid.Column="0" HeightRequest="100" VerticalOptions="CenterAndExpand"/>
+                                                                <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand">
+                                                                    <Label Text="{Binding NovelName}" FontSize="10" FontAttributes="Bold"/>
+                                                                    <Label Text="{Binding NovelDescription}" HorizontalTextAlignment="Start"
+                                                           FontSize="9"/>
+                                                                    <Label Text="{Binding PopularityWork}" HorizontalTextAlignment="Start" FontSize="9" TextColor="#f29027"/>
+                                                                </StackLayout>
+
+                                                            </Grid>
+
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                                            </StackLayout.GestureRecognizers>
+
+                                                        </StackLayout>
+
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+
+                            </AbsoluteLayout>
+
+                        </ScrollView>
+
+                    </StackLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Title="分类" ImageSource="iconFind" SelectionColor="#000000" TitleFontColor="#a3a0a0">
+                <tabView:SfTabItem.Content>
+                    <StackLayout BackgroundColor="White">
+
+                        <AbsoluteLayout HeightRequest="80">
+                            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         Orientation="Horizontal" Padding="20,0,20,0">
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="logo" WidthRequest="130" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="iconSearch" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </AbsoluteLayout>
+
+                        <ScrollView>
+
+                            <AbsoluteLayout>
+
+                                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                             AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                                    <StackLayout Orientation="Horizontal" Padding="14,0,14,0" HorizontalOptions="Start">
+                                        <Label Text="分类" TextColor="Black" FontSize="20"></Label>
+                                        <Label Text="共 71本作品" VerticalOptions="CenterAndExpand" FontSize="12"></Label>
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#e3e3e3" HeightRequest="1" Margin="14,0,14,0"/>
+
+                                    <StackLayout BindingContext="{StaticResource HomeVM}" Padding="14,7,14,0">
+                                        <CollectionView ItemsSource="{Binding Items}">
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="4"
+                                                                 VerticalItemSpacing="4"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Frame BorderColor="Black" Margin="20,10,20,10" Padding="0"
+                                                           HeightRequest="70">
+
+
+                                                        <AbsoluteLayout>
+                                                            <Image Source="{Binding NovelImg}" AbsoluteLayout.LayoutFlags="All"
+                                                                   AbsoluteLayout.LayoutBounds="0,0,1,1" Aspect="AspectFill"></Image>
+                                                            <BoxView Background="black" AbsoluteLayout.LayoutFlags="All"
+                                                                   AbsoluteLayout.LayoutBounds="0,0,1,1" Opacity="0.7"/>
+                                                            <Label Text="{Binding NovelName}"
+                                                                   FontSize="15" HorizontalTextAlignment="Center"
+                                                                   AbsoluteLayout.LayoutFlags="All"
+                                                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                                   VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold"
+                                                                   TextColor="White"/>
+                                                            <AbsoluteLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="Classification" CommandParameter="{Binding NovelName}"/>
+                                                            </AbsoluteLayout.GestureRecognizers>
+                                                        </AbsoluteLayout>
+
+
+                                                    </Frame>
+
+
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </StackLayout>
+
+
+                                </StackLayout>
+
+                            </AbsoluteLayout>
+
+                        </ScrollView>
+
+                    </StackLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Title="书架" ImageSource="iconBook" SelectionColor="#000000" TitleFontColor="#a3a0a0">
+                <tabView:SfTabItem.Content>
+                    <StackLayout BackgroundColor="White">
+
+                        <AbsoluteLayout HeightRequest="80">
+                            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         Orientation="Horizontal" Padding="20,0,20,0">
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="logo" WidthRequest="130" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="iconSearch" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </AbsoluteLayout>
+
+                        <ScrollView>
+
+                            <AbsoluteLayout>
+
+                                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                             AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                                    <StackLayout Orientation="Horizontal" Padding="14,0,14,0" HorizontalOptions="Start">
+                                        <Label Text="书架" TextColor="Black" FontSize="20"></Label>
+                                        <Label Text="共 4本作品" VerticalOptions="CenterAndExpand" FontSize="12"></Label>
+                                    </StackLayout>
+
+                                    <BoxView BackgroundColor="#e3e3e3" HeightRequest="1" Margin="14,0,14,0"/>
+
+                                    <StackLayout BindingContext="{StaticResource SignupVM}" Padding="14,7,14,0">
+                                        <CollectionView ItemsSource="{Binding nv2}">
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="6"
+                                                                 VerticalItemSpacing="25"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <StackLayout>
+                                                        <Image Source="{Binding NovelImg}" Aspect="AspectFill" HeightRequest="150"></Image>
+                                                        <Label Text="{Binding NovelName}" FontSize="12"></Label>
+                                                    </StackLayout>
+
+
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                            </AbsoluteLayout>
+
+                        </ScrollView>
+
+                    </StackLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Title="我的" ImageSource="iconUser" SelectionColor="#000000" TitleFontColor="#a3a0a0">
+                <tabView:SfTabItem.Content>
+                    <StackLayout>
+
+                        <AbsoluteLayout HeightRequest="60"  BackgroundColor="White">
+                            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         Orientation="Horizontal" Padding="20,0,20,0">
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="logo" WidthRequest="130" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="iconSearch" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </AbsoluteLayout>
+
+                        <ScrollView BackgroundColor="#f2f2f2">
+
+                            <AbsoluteLayout>
+
+                                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                             AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                                    <Frame HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 Padding="0,10,0,10" CornerRadius="5"
+                                           Margin="10,0,10,10">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="0.6*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <abstractions:CircleImage 
+                                                  Grid.Row="0" Grid.Column="0"
+                                                  Grid.RowSpan="2"
+                                                  Aspect="AspectFill"
+                                                  WidthRequest="80"
+                                                  HeightRequest="80"
+                                                  HorizontalOptions="CenterAndExpand"
+                                                  Source="FL7">
+
+                                            </abstractions:CircleImage>
+
+                                            <StackLayout Grid.Row="0" Grid.Column="1">
+                                                <Label Text="游客" TextColor="Black"
+                                                       FontAttributes="Bold"
+                                                       FontSize="20" VerticalTextAlignment="Center"></Label>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Row="1" Grid.Column="1">
+                                                <Label Text="填写您的个人签名" FontSize="12"
+                                                       VerticalTextAlignment="Center"></Label>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Row="0" Grid.Column="2"
+                                                         Grid.RowSpan="2">
+                                                <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 Padding="0,10,0,10" CornerRadius="5"
+                                           Margin="10,0,10,10">
+                                        <StackLayout>
+
+                                            <StackLayout Padding="20,5,0,8">
+                                                <Label Text="常用功能" TextColor="Black" 
+                                                       FontAttributes="Bold" FontSize="16"></Label>
+                                            </StackLayout>
+
+                                            <Grid Margin="0,5,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="iconcard" Grid.Row="0" Grid.Column="0"
+                                                   WidthRequest="25"></Image>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1"
+                                                         VerticalOptions="CenterAndExpand">
+                                                    <Label Text="购买历史" FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="#404040"></Label>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                                </StackLayout>
+
+                                            </Grid>
+
+                                            <Grid Margin="0,5,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="iconcart" Grid.Row="0" Grid.Column="0"
+                                                   WidthRequest="25"></Image>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1"
+                                                         VerticalOptions="CenterAndExpand">
+                                                    <Label Text="购物车" FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="#404040"></Label>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                                </StackLayout>
+
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="CartPage"/>
+                                                </Grid.GestureRecognizers>
+
+                                            </Grid>
+
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="icontrophy" Grid.Row="0" Grid.Column="0"
+                                                   WidthRequest="25"></Image>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1"
+                                                         VerticalOptions="CenterAndExpand">
+                                                    <Label Text="福利优惠" FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="#404040"></Label>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                                </StackLayout>
+
+                                            </Grid>
+
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="iconfeedback" Grid.Row="0" Grid.Column="0"
+                                                   WidthRequest="25"></Image>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1"
+                                                         VerticalOptions="CenterAndExpand">
+                                                    <Label Text="反馈帮助" FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="#404040"></Label>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                                </StackLayout>
+
+                                            </Grid>
+
+                                            <Grid Margin="0,0,0,10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="iconquit" Grid.Row="0" Grid.Column="0"
+                                                   WidthRequest="25"></Image>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1"
+                                                         VerticalOptions="CenterAndExpand">
+                                                    <Label Text="退出账号" FontSize="13"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="#404040"></Label>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Image Source="iconsarrowright"
+                                                       Aspect="AspectFill"
+                                                       HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       WidthRequest="20"></Image>
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </StackLayout>
+
+
+                                    </Frame>
+
+
+                                </StackLayout>
+
+                            </AbsoluteLayout>
+
+                        </ScrollView>
+
+                    </StackLayout>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+        </tabView:SfTabView>
+
+    </ContentPage.Content>
+
+
+</ContentPage>

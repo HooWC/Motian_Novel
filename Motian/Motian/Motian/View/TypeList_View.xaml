@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Motian.ViewModel"
+             x:Class="Motian.View.TypeList_View"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+
+            <AbsoluteLayout HeightRequest="40">
+                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         Orientation="Horizontal" Padding="20,0,20,0">
+
+                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image Source="iconarrowleft2Black" WidthRequest="17" VerticalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Back"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image Source="iconSearch" WidthRequest="21" VerticalOptions="CenterAndExpand"></Image>
+                    </StackLayout>
+
+
+                </StackLayout>
+            </AbsoluteLayout>
+
+            <ScrollView>
+
+                <AbsoluteLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                 AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                        <StackLayout Orientation="Horizontal" Padding="14,0,14,0" HorizontalOptions="Start">
+                            <Label x:Name="TypeName" TextColor="Black" FontSize="20"></Label>
+                            <Label x:Name="NumberBook" VerticalOptions="CenterAndExpand" FontSize="12"></Label>
+                        </StackLayout>
+
+                        <BoxView BackgroundColor="#e3e3e3" HeightRequest="1" Margin="14,0,14,0"/>
+
+                        <StackLayout  Padding="14,7,14,0">
+                            <CollectionView x:Name="TypeNovels">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="4"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2.8*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image Source="{Binding NovelImg}" VerticalOptions="CenterAndExpand"
+                                                   Grid.Row="0" Grid.Column="0"></Image>
+
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="0,15,0,0" VerticalOptions="CenterAndExpand">
+                                                <Label Text="{Binding NovelName}" FontSize="17" TextColor="Black" FontAttributes="Bold"></Label>
+                                                <Label Text="{Binding NovelDescription}" Padding="0,5,0,5"></Label>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Author,StringFormat='作者：{0}'}"></Label>
+                                                    <Label Text="{Binding NovelPrice,StringFormat='RM {0:F2}'}" HorizontalOptions="EndAndExpand"
+                                                           TextColor="#ffad42"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="NovelDetail" CommandParameter="{Binding NovelId}"/>
+                                            </Grid.GestureRecognizers>
+
+                                        </Grid>
+
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+
+                </AbsoluteLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
